@@ -21,7 +21,7 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.169.0",
-    "packageManager": "pnpm@8.15.8"
+    "packageManager": "pnpm@9.12.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.14",
