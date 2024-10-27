@@ -14,11 +14,13 @@
     "@vapi-ai/web": "^1.0.255",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "gsap": "^3.12.5",
     "lucide-react": "^0.320.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.14",

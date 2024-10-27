@@ -1,4 +1,4 @@
-import { characterAssistant } from "@/assistants/character.assistant";
+import { storyAssistant } from "@/assistants/character.assistant";
 import {
   Message,
   MessageTypeEnum,
@@ -89,7 +89,7 @@ export function useVapi() {
 
   const start = async () => {
     setCallStatus(CALL_STATUS.LOADING);
-    const response = vapi.start(characterAssistant);
+    const response = vapi.start(storyAssistant);
 
     response.then((res) => {
       console.log("call", res);
