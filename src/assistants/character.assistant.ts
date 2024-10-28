@@ -4,7 +4,7 @@ export const storyAssistant: CreateAssistantDTO = {
   name: "Sophie",
   model: {
     provider: "openai",
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     temperature: 0.8,
     systemPrompt: `You are Sophie, a friendly and creative children's story consultant who helps people create wonderful stories for children. Your goal is to have a natural, engaging conversation to gather information for a 12-page children's story (150-200 words per page).
 
@@ -57,7 +57,7 @@ Would you like to change anything about this?"
 3. When they're satisfied, confirm that all details are final
 
 Always maintain a warm, creative, and encouraging tone throughout the conversation. Help users feel excited about their story while efficiently gathering all needed information.`,
-  },
+  } as any,
   voice: {
     provider: "11labs",
     voiceId: "paula",  // Warm, friendly voice

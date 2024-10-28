@@ -17,7 +17,6 @@ const AbstractBall: React.FC<any> = ({
   cameraSpeedY = 0.0,
   cameraSpeedX = 0.0,
   cameraZoom = 150,
-  cameraGuide = false,
 }) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
