@@ -4,7 +4,7 @@ export const storyAssistant: CreateAssistantDTO = {
   name: "Sophie",
   model: {
     provider: "openai",
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     temperature: 0.8,
     systemPrompt: `You are Sophie, a friendly and creative children's story consultant who helps people create wonderful stories for children. Your goal is to have a natural, engaging conversation to gather information for a 12-page children's story (150-200 words per page).
 

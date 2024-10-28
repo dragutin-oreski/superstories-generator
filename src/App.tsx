@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AbstractBall from '@/components/vapi/glob';
 import { CALL_STATUS, useVapi } from "./features/Assistant";
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import { VapiButton, vapi } from "./features/Assistant";
 import { MessageList } from "./features/Messages";
-import { CharacterPreview } from "./features/Character";
 
 function App() {
   const scrollAreaRef = useRef<any>(null);
