@@ -1,6 +1,6 @@
 import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 
-export const storyAssistant: CreateAssistantDTO = {
+export const storyAssistantDirect: CreateAssistantDTO = {
   name: "Sophie",
   model: {
     provider: "openai",

@@ -1,4 +1,4 @@
-import { storyAssistant } from "@/assistants/character.assistant";
+import { envConfig } from "../../config/env.config";
 import {
   Message,
   MessageTypeEnum,
@@ -6,7 +6,6 @@ import {
   TranscriptMessageTypeEnum,
 } from "@/lib/types/conversation.type";
 import { useEffect, useState } from "react";
-// import { MessageActionTypeEnum, useMessages } from "./useMessages";
 import { vapi } from "./vapi.sdk";
 
 export enum CALL_STATUS {
@@ -89,7 +88,7 @@ export function useVapi() {
 
   const start = async () => {
     setCallStatus(CALL_STATUS.LOADING);
-    const response = vapi.start(storyAssistant);
+    const response = vapi.start(envConfig.vapi.assistantId);
 
     response.then((res) => {
       console.log("call", res);
