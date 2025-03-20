@@ -26,6 +26,53 @@ export function useVapi() {
     useState<TranscriptMessage | null>(null);
 
   const [audioLevel, setAudioLevel] = useState(0);
+  
+  // State to store the current call ID
+  const [currentCallId, setCurrentCallId] = useState<string | null>(null);
+
+  // Simple function to fetch and log analytics data
+  const fetchCallAnalytics = async (callId: string) => {
+    try {
+      console.log("Fetching analytics for call ID:", callId);
+      
+      // Construct the API URL for the analytics endpoint
+      const apiUrl = `${envConfig.vapi.apiUrl}/call/${callId}/analytics`;
+      
+      // Make the API request with the private key for authentication
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${envConfig.vapi.privateKey}`,
+          "Content-Type": "application/json"
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch analytics: ${response.status}`);
+      }
+      
+      const analyticsData = await response.json();
+      
+      // Log the complete analytics data
+      console.log("Call Analytics Data:", analyticsData);
+      
+      // You can process specific data points here if needed
+      // For example:
+      if (analyticsData.duration) {
+        console.log("Call Duration:", analyticsData.duration);
+      }
+      
+      if (analyticsData.transcript) {
+        console.log("Transcript Length:", analyticsData.transcript.length);
+      }
+      
+      // Return the data in case you want to use it elsewhere
+      return analyticsData;
+    } catch (error) {
+      console.error("Error fetching call analytics:", error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     const onSpeechStart = () => setIsSpeechActive(true);
@@ -39,9 +86,14 @@ export function useVapi() {
       setCallStatus(CALL_STATUS.ACTIVE);
     };
 
-    const onCallEnd = () => {
+    const onCallEnd = async () => {
       console.log("Call has stopped");
       setCallStatus(CALL_STATUS.INACTIVE);
+      
+      // Fetch analytics data if we have a call ID
+      if (currentCallId) {
+        await fetchCallAnalytics(currentCallId);
+      }
     };
 
     const onVolumeLevel = (volume: number) => {
@@ -84,7 +136,7 @@ export function useVapi() {
       vapi.off("error", onError);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentCallId]);
 
   const start = async () => {
     setCallStatus(CALL_STATUS.LOADING);
@@ -92,6 +144,11 @@ export function useVapi() {
 
     response.then((res) => {
       console.log("call", res);
+      // Store the call ID when the call starts
+      if (res && res.id) {
+        setCurrentCallId(res.id);
+        console.log("Call ID stored:", res.id);
+      }
     });
   };
 
@@ -117,5 +174,6 @@ export function useVapi() {
     start,
     stop,
     toggleCall,
+    currentCallId,
   };
 }
