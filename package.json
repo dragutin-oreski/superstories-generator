@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@radix-ui/react-scroll-area": "^1.0.5",
+    "@supabase/supabase-js": "^2.49.1",
+    "@types/uuid": "^10.0.0",
     "@vapi-ai/web": "^2.1.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -19,9 +21,11 @@
     "openai": "^4.68.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "supabase": "^2.19.7",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.14",

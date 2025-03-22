@@ -5,4 +5,9 @@ export const envConfig = {
     privateKey: import.meta.env.VITE_VAPI_PRIVATE_KEY ?? "vapi-private-key",
     assistantId: import.meta.env.VITE_VAPI_ASSISTANT_ID ?? "vapi-assistant-id",
   },
+  supabase: {
+    url: import.meta.env.VITE_SUPABASE_URL ?? "",
+    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY ?? "",
+    serviceRoleKey: import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY,
+  },
 };
